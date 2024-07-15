@@ -1,0 +1,41 @@
+---
+
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="seiyadev's portfolio - Software Engineer and Content creator. +1 year of
+      experience, specialized in unique solutions"
+    />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>seiyadev's portfolio - Software Engineer and Content creator.</title>
+  </head>
+  <body class="bg-[#FAF8FC] dark:text-white dark:bg-[#090C10]">
+    <slot />
+  </body>
+</html>
+
+<script is:inline>
+  const theme = (() => {
+    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+      return localStorage.getItem("theme");
+    }
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      return "dark";
+    }
+    return "light";
+  })();
+
+  if (theme === "light") {
+    document.querySelector("html").classList.remove("dark");
+  } else {
+    document.querySelector("html").classList.add("dark");
+  }
+  window.localStorage.setItem("theme", theme);
+</script>
